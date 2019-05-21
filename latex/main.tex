@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+
+\title{MSR Final Project}
+\author{Mark Dyehouse}
+\date{May 2019 - Present}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This is the abstract for the msr final project
+\end{abstract}
+
+\section{Introduction}
+
+\section{Derivations and Equations}
+\subsection{Horizontal Motion}
+$$\Delta x = a \Delta t^2$$
+There are two important parts of the impact and resultant motion to consider. One is the part during which the impactor is still moving toward the chassis and approximate elastic deformation is occurring. The chassis reaches a maximum velocity due to the impact and then the second stage takes over. During the second stage, the motion of the entire chassis is governed by the initial maximum velocity and the pressure applied by the granular material.
+$$\Delta x = (a_{impactor} - a_{granular}) \Delta t^2_{impactor} + a_{granular} \Delta t_{stop}^2$$
+From (paper on granular material motions citation), we see that the pressure from a granular material applied on the surface of an object within the granular material can be expressed as growing linearly with depth.
+$$\sigma_{x,z} = 0.3 |z| \quad \dfrac{N}{cm^2}$$
+This leads us to the acceleration of the chassis due to the pressure from the granular material.
+$$a_{granular} = \dfrac{0.3 |z| A_{robot}}{m_{robot}}$$
+The acceleration of the chassis due to the impactor is found by using the Young's modulus of the material and assuming that one material acts as a spring (the impactor is a likely choice as a softer material than the chassis).
+$$a_{impact} = \dfrac{v_{max, impactor} A_{impactor} \sqrt{E \rho}}{m_{robot}}$$
+The time from initial impact to the time the impactor reaches zero velocity is found through conservation of energy and momenta.
+$$\Delta t_{impactor} = \dfrac{m_{impactor} L_{impactor}}{E A_{impactor}}$$
+The time from the impactor having zero velocity and when all kinetic energy has been transferred to the chassis (excluding losses to vibrations and heat) to the time when the chassis velocity reaches zero and all kinetic energy from it has been transferred to the granular material can be found through conservation of energy as well.
+$$\Delta t_{stop} = \dfrac{m_{robot} v_{max, impactor}}{0.3 |z| A_{robot}}$$
+Now that we have defined the pieces of the overall change in horizontal position, we can combine them.
+$$\Delta x = (a_{impactor} - a_{granular}) \Delta t^2_{impactor} + a_{granular} \Delta t_{stop}^2$$
+$$\Delta x = (\dfrac{v_{max, impactor} A_{impactor} \sqrt{E \rho}}{m_{robot}} - \dfrac{0.3 |z| A_{robot}}{m_{robot}}) (\dfrac{m_{impactor} L_{impactor}}{E A_{impactor}})^2$$
+\newline
+$$+ \quad (\dfrac{0.3 |z| A_{robot}}{m_{robot}}) (\dfrac{m_{robot} v_{max, impactor}}{0.3 |z| A_{robot}})^2$$
+\subsection{Vertical Motion}
+For both updward and downward motion, these equations assume that the distance moved within the granular material does not affect the pressure exerted on the chassis by the granular material.
+\paragraph{Upward Motion}
+$$\Delta x = (a_{impactor} - a_{gravitational} - a_{granular}) \Delta t^2_{impactor} + (a_{gravitaitonal} + a_{granular}) \Delta t_{stop}^2$$
+\paragraph{Downward Motion}
+$$\Delta x = (a_{impactor} + a_{gravitational} - a_{granular}) \Delta t^2_{impactor} + (a_{gravitaitonal} - a_{granular}) \Delta t_{stop}^2$$
+\subsection{Velocity}
+Velocity of the system in any direction requires a calculation or assumption of a specified number of impacts per unit time. This can be specified and then limited in the system or calculated as a maximum for an upper limit. It will be dependent on the maximum frequency at which the actuators can be activated in order to strike the chassis and then allow for enough time to allow the system to reach zero velocity.
+\end{document}
