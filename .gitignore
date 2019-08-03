@@ -1,0 +1,7 @@
+*.dis
+*.elf
+*.pyc
+*.zip
+*.map
+*.o
+*.hex
